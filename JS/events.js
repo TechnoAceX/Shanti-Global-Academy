@@ -12,6 +12,28 @@
             }
         });
 
+    const holiImages = [
+        'Assets/holi1.jpg',
+        'Assets/holi2.jpg',
+        'Assets/holi3.jpg'
+    ];
+    let currentIndex = 0;
+
+    function changeImage(direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = holiImages.length - 1;
+        if (currentIndex >= holiImages.length) currentIndex = 0;
+
+        const imageElement = document.getElementById('holiImage');
+        imageElement.style.opacity = 0;
+
+        setTimeout(() => {
+            imageElement.src = holiImages[currentIndex];
+            imageElement.style.opacity = 1;
+        }, 200);
+    }
+
+
         // Scroll to top functionality
         document.getElementById('scroll-top').addEventListener('click', function() {
             window.scrollTo({
