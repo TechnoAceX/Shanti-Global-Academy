@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics - Shanti Global Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --light-blue: #dbeafe;
+            --white: #ffffff;
+            --light-grey: #f8fafc;
+            --dark-grey: #64748b;
+            --text-dark: #1e293b;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --accent-orange: #f59e0b;
+            --accent-green: #10b981;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation - Copied from existing design */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 0.8rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(59, 130, 246, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23dbeafe" width="1200" height="800"/><g fill-opacity="0.1"><circle fill="%231e3a8a" cx="200" cy="200" r="80"/><circle fill="%233b82f6" cx="800" cy="300" r="120"/><circle fill="%231e3a8a" cx="1000" cy="150" r="60"/><circle fill="%233b82f6" cx="300" cy="500" r="90"/><circle fill="%231e3a8a" cx="700" cy="600" r="100"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--dark-grey);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Academics Grid */
+        .academics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .academic-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--secondary-blue);
+        }
+
+        .academic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .academic-card:hover::before {
+            opacity: 1;
+        }
+
+        .academic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .academic-card:nth-child(1) {
+            border-top-color: var(--accent-orange);
+        }
+
+        .academic-card:nth-child(2) {
+            border-top-color: var(--accent-green);
+        }
+
+        .academic-card:nth-child(3) {
+            border-top-color: var(--secondary-blue);
+        }
+
+        .academic-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--white);
+            transition: transform 0.3s ease;
+        }
+
+        .academic-card:hover .academic-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .academic-card h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .academic-card p {
+            text-align: center;
+            color: var(--dark-grey);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .academic-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .academic-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-grey);
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .academic-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .academic-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Reopening Notice */
+        .reopening-notice {
+            background: linear-gradient(135deg, var(--accent-orange), #f97316);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-lg);
+            animation: pulse 2s infinite;
+        }
+
+        .reopening-notice h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .reopening-notice .calendar-icon {
+            font-size: 2rem;
+            animation: bounce 1s infinite;
+        }
+
+        /* Notices Section */
+        .notices-section {
+            background: var(--light-grey);
+        }
+
+        .notices-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .notice-ticker {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .notice-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--white);
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-blue);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+
+        .notice-item:nth-child(1) { animation-delay: 0.2s; }
+        .notice-item:nth-child(2) { animation-delay: 0.4s; }
+        .notice-item:nth-child(3) { animation-delay: 0.6s; }
+        .notice-item:nth-child(4) { animation-delay: 0.8s; }
+
+        .notice-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .notice-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .notice-content {
+            flex: 1;
+        }
+
+        .notice-content h4 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .notice-content p {
+            color: var(--dark-grey);
+            font-size: 0.9rem;
+        }
+
+        .notice-action {
+            display: flex;
+            gap: 1rem;
+            margin-left: 1rem;
+        }
+
+        .notice-btn {
+            padding: 0.5rem 1rem;
+            background: var(--secondary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .notice-btn:hover {
+            background: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        .notice-btn.secondary {
+            background: transparent;
+            color: var(--secondary-blue);
+            border: 1px solid var(--secondary-blue);
+        }
+
+        .notice-btn.secondary:hover {
+            background: var(--secondary-blue);
+            color: var(--white);
+        }
+
+        /* Footer - Copied from existing design */
+        .footer {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--light-blue);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-blue);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-blue);
+            border: none;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(100px);
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .academics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .notice-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .notice-action {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .academic-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%231e3a8a'/><text x='50' y='60' text-anchor='middle' fill='white' font-size='30' font-weight='bold'>SGA</text></svg>" alt="Shanti Global Academy Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                Shanti Global Academy
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#academics" class="active">Academics</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Academics at Shanti Global Academy</h1>
+            <p>Laying Strong Foundations for Lifelong Learning</p>
+        </div>
+    </section>
+
+    <!-- Academics Section -->
+    <section class="section" id="academics">
+        <div class="container">
+            <h2 class="section-title">Our Academic Programs</h2>
+            <p class="section-subtitle">Comprehensive education programs designed to nurture young minds from their earliest years through primary education</p>
+            
+            <div class="academics-grid">
+                <!-- Nursery Program -->
+                <div class="academic-card">
+                    <div class="academic-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Nursery</h3>
+                    <p>Our nursery program focuses on early emotional and sensory development through carefully crafted play-based learning experiences.</p>
+                    <ul class="academic-features">
+                        <li>Emotional development through guided play</li>
+                        <li>Sensory exploration activities</li>
+                        <li>Basic social skills development</li>
+                        <li>Language immersion through songs and stories</li>
+                        <li>Art and craft for motor skill development</li>
+                        <li>Safe and nurturing environment</li>
+                    </ul>
+                </div>
+
+                <!-- KG Program -->
+                <div class="academic-card">
+                    <div class="academic-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Kindergarten (KG)</h3>
+                    <p>Introduction to formal learning with focus on literacy, numeracy, fine motor skills, and establishing healthy classroom habits.</p>
+                    <ul class="academic-features">
+                        <li>Phonics-based reading introduction</li>
+                        <li>Number recognition and basic math concepts</li>
+                        <li>Fine motor skill development</li>
+                        <li>Structured classroom routines</li>
+                        <li>Creative expression through art</li>
+                        <li>Interactive learning through games</li>
+                    </ul>
+                </div>
+
+                <!-- Prep Program -->
+                <div class="academic-card">
+                    <div class="academic-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Prep Class</h3>
+                    <p>Academic readiness program with structured learning approach, emphasizing creativity through hands-on projects and activities.</p>
+                    <ul class="academic-features">
+                        <li>Reading fluency and comprehension</li>
+                        <li>Mathematical problem-solving skills</li>
+                        <li>Science exploration and discovery</li>
+                        <li>Project-based learning approach</li>
+                        <li>Creative writing and expression</li>
+                        <li>Leadership and teamwork skills</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- School Reopening Notice -->
+            <div class="reopening-notice">
+                <h3>
+                    <i class="fas fa-calendar-alt calendar-icon"></i>
+                    Important Notice
+                </h3>
+                <p><strong>School reopens on 25th July 2025 for all classes</strong><br>
+                Get ready for an exciting new academic year filled with learning, growth, and discovery!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notices & Announcements Section -->
+    <section class="section notices-section">
+        <div class="container">
+            <h2 class="section-title">Notices & Announcements</h2>
+            <p class="section-subtitle">Stay updated with the latest news and important information from Shanti Global Academy</p>
+            
+            <div class="notices-container">
+                <div class="notice-ticker">
+                    <div class="notice-item">
+                        <div class="notice-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="notice-content">
+                            <h4>Admissions Open for Academic Year 2025-26</h4>
+                            <p>We are now accepting applications for all classes. Limited seats available. Apply now to secure your child's future with us.</p>
+                        </div>
+                        <div class="notice-action">
+                            <a href="#" class="notice-btn">Apply Now</a>
+                            <a href="#" class="notice-btn secondary">Read More</a>
+                        </div>
+                    </div>
+
+                    <div class="notice-item">
+                        <div class="notice-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="notice-content">
+                            <h4>Parent-Teacher Meeting Scheduled</h4>
+                            <p>PTM scheduled on 2nd August 2025. Parents are requested to attend and discuss their child's progress with teachers.</p>
+                        </div>
+                        <div class="notice-action">
+                            <a href="#" class="notice-btn">Schedule Meeting</a>
+                            <a href="#" class="notice-btn secondary">Details</a>
+                        </div>
+                    </div>
+
+                    <div class="notice-item">
+                        <div class="notice-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="notice-content">
+                            <h4>Independence Day Holiday</h4>
+                            <p>School will remain closed on 15th August 2025 on account of Independence Day. Regular classes will resume on 16th August.</p>
+                        </div>
+                        <div class="notice-action">
+                            <a href="#" class="notice-btn secondary">View Calendar</a>
+                        </div>
+                    </div>
+
+                    <div class="notice-item">
+                        <div class="notice-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="notice-content">
+                            <h4>Transport Form Submission Deadline</h4>
+                            <p>Last date for transport form submission is 20th July 2025. Late submissions will not be entertained.</p>
+                        </div>
+                        <div class="notice-action">
+                            <a href="#" class="notice-btn">Download Form</a>
+                            <a href="#" class="notice-btn secondary">Submit Online</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, Central Delhi, Delhi 110001</p>
+                    <p><i class="fas fa-phone"></i> +91 11 2345 6789</p>
+                    <p><i class="fas fa-envelope"></i> info@shantiglobalacademy.edu.in</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#academics">Academics</a>
+                    <a href="#admissions">Admissions</a>
+                    <a href="#gallery">Gallery</a>
+                </div>
+                <div class="footer-section">
+                    <h4>School Hours</h4>
+                    <p>Monday - Friday: 8:00 AM - 2:30 PM</p>
+                    <p>Saturday: 8:00 AM - 12:00 PM</p>
+                    <p>Sunday: Closed</p>
+                    <p>Office Hours: 9:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Shanti Global Academy. All rights reserved. | Designed with ❤️ for Education</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations using Intersection Observer
+        function createObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
+
+            // Observe all sections
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Scroll to top button functionality
+        function toggleScrollTopButton() {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', toggleScrollTopButton);
+
+        // Scroll to top functionality
+        document.getElementById('scrollTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            createObserver();
+            toggleScrollTopButton();
+            
+            // Add staggered animation to notice items
+            const noticeItems = document.querySelectorAll('.notice-item');
+            noticeItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+
+        // Add interactive hover effects to cards
+        document.querySelectorAll('.academic-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
