@@ -6,31 +6,30 @@
     <title>Events & Gallery - Shanti Global Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/events.css">
+    <link rel="stylesheet" href="css/events.css">
 </head>
 <body>
     <!-- Navigation -->
-     <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar">
     <div class="nav-container">
         <a href="#" class="logo">
             <img src="logo.jpg" alt="Shanti Global Academy Logo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
             Shanti Global Academy
         </a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#academics">Academics</a></li>
-                <li><a href="#admissions">Admissions</a></li>
-                <li><a href="#gallery" class="active">Gallery</a></li>
-            </ul>
-        </div>
-    </nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="events.html" class="active">Events</a></li>
+        </ul>
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Events & Celebrations Gallery</h1>
-            <p>Capturing joyful moments of our students throughout the academic year</p>
+            <p>Capturing memorable moments and joyful celebrations of our school community</p>
         </div>
     </section>
 
@@ -38,179 +37,97 @@
     <section class="section" id="gallery">
         <div class="container">
             
-            <!-- Festivals Category -->
+            <!-- Holi Celebration -->
             <div class="event-category">
                 <div class="category-title">
-                    <i class="fas fa-star"></i>
-                    Festivals & Cultural Events
-                </div>
-                <div class="gallery-item-slider" data-category="festivals">
-                <div class="slider-wrapper">
-                    <img src="Assets/holi1.jpg" alt="Holi Celebration" class="slider-image" id="holiImage">
-                    <button class="slider-arrow left" onclick="changeImage(-1)">&#10094;</button>
-                    <button class="slider-arrow right" onclick="changeImage(1)">&#10095;</button>
-                </div>
-                <div class="gallery-caption">
-                    <h4>Holi Celebration</h4>
-                    <p>Students enjoying the festival of colors with joy and enthusiasm</p>
-                </div>
-            </div>
-
-                    <div class="gallery-item" data-category="festivals">
-                        <img src="https://images.unsplash.com/photo-1605548362815-f3c9b9ae5211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Rangoli Competition">
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">
-                                <h4>Rangoli Competition</h4>
-                                <p>Creative and beautiful rangoli designs by our talented students</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="festivals">
-                        <img src="https://images.unsplash.com/photo-1587041080614-3b8f3a9e1b4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Independence Day">
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">
-                                <h4>Independence Day</h4>
-                                <p>Patriotic celebrations with flag hoisting and cultural performances</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="festivals">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Diwali Celebration">
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">
-                                <h4>Diwali Celebration</h4>
-                                <p>Festival of lights celebrated with traditional dances and decorations</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Picnic Category -->
-            <div class="event-category">
-                <div class="category-title">
-                    <i class="fas fa-tree"></i>
-                    Picnic & Outdoor Fun
+                    <i class="fas fa-palette"></i>
+                    Holi Celebration
                 </div>
                 <div class="category-divider"></div>
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-category="picnic">
-                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Park Picnic">
+                    <div class="gallery-item" data-category="holi">
+                        <img src="Assets/holi1.jpg" alt="Holi Colors Celebration">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Park Picnic</h4>
-                                <p>Students enjoying outdoor games and nature activities</p>
+                                <h4>Festival of Colors</h4>
+                                <p>Students celebrating Holi with vibrant colors and traditional joy</p>
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item" data-category="picnic">
-                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Nature Walk">
+                    <div class="gallery-item" data-category="holi">
+                        <img src="Assets/holi2.jpg" alt="Holi Colors Celebration">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Nature Walk</h4>
-                                <p>Educational nature walk exploring local flora and fauna</p>
+                                <h4>Cultural Dance</h4>
+                                <p>Traditional dance performance during Holi celebration</p>
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item" data-category="picnic">
-                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Farm Visit">
-                        <div class="gallery-overlay">
+                    <div class="gallery-item" data-category="holi">
+                       <img src="Assets/holi3.jpg" alt="Holi Colors Celebration"><div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Farm Visit</h4>
-                                <p>Learning about agriculture and farm animals during field trip</p>
+                                <h4>Color Splash Fun</h4>
+                                <p>Students enjoying color games and festive activities</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Swimming Pool Category -->
+            <!-- Rangoli Competition -->
             <div class="event-category">
                 <div class="category-title">
-                    <i class="fas fa-swimmer"></i>
-                    Swimming Pool Activities
+                    <i class="fas fa-brush"></i>
+                    Rangoli Competition
                 </div>
                 <div class="category-divider"></div>
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-category="swimming">
-                        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Swimming Lessons">
-                        <div class="gallery-overlay">
+                    <div class="gallery-item" data-category="rangoli">
+                        <img src="Assets/Rangoli1.jpg" alt="Holi Colors Celebration"><div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Swimming Lessons</h4>
-                                <p>Professional swimming coaching for students of all levels</p>
+                                <h4>Intricate Patterns</h4>
+                                <p>Award-winning rangoli design with traditional motifs</p>
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item" data-category="swimming">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pool Fun">
+                    <div class="gallery-item" data-category="rangoli">
+                       <img src="Assets/Rangoli3.jpg" alt="Holi Colors Celebration">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Pool Fun Activities</h4>
-                                <p>Water games and splash activities for younger students</p>
+                                <h4>Vibrant Creation</h4>
+                                <p>Students showcasing their artistic talents through rangoli</p>
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item" data-category="swimming">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Swimming Competition">
-                        <div class="gallery-overlay">
+                    <div class="gallery-item" data-category="rangoli">
+                        <img src="Assets/Rangoli2.jpg" alt="Holi Colors Celebration"><div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Swimming Competition</h4>
-                                <p>Annual inter-house swimming championship</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Waterpark Category -->
-            <div class="event-category">
-                <div class="category-title">
-                    <i class="fas fa-water"></i>
-                    Waterpark Adventure
-                </div>
-                <div class="category-divider"></div>
-                <div class="gallery-grid">
-                    <div class="gallery-item" data-category="waterpark">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Water Slides">
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">
-                                <h4>Water Slides Fun</h4>
-                                <p>Thrilling water slide adventures during school excursion</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-item" data-category="waterpark">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Wave Pool">
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">
-                                <h4>Wave Pool Experience</h4>
-                                <p>Students enjoying the artificial waves and water activities</p>
+                                <h4>Team Collaboration</h4>
+                                <p>Students working together on a grand rangoli masterpiece</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Assembly Category -->
+            <!-- Morning Assembly -->
             <div class="event-category">
                 <div class="category-title">
                     <i class="fas fa-users"></i>
-                    School Assembly
+                    Morning Assembly
                 </div>
                 <div class="category-divider"></div>
                 <div class="gallery-grid">
                     <div class="gallery-item" data-category="assembly">
-                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Morning Assembly">
-                        <div class="gallery-overlay">
+                       <img src="Assets/Assembly1.jpg" alt="Holi Colors Celebration"><div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Morning Assembly</h4>
-                                <p>Daily morning assembly with prayer and announcements</p>
+                                <h4>Daily Gathering</h4>
+                                <p>Students participating in morning prayers and announcements</p>
                             </div>
                         </div>
-                        </div>
+                    </div>
                     <div class="gallery-item" data-category="assembly">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Student Presentations">
-                        <div class="gallery-overlay">
+                        <img src="Assets/Assembly2.jpg" alt="Holi Colors Celebration"><div class="gallery-overlay">
                             <div class="gallery-caption">
                                 <h4>Student Presentations</h4>
                                 <p>Students presenting their projects and achievements</p>
@@ -218,49 +135,87 @@
                         </div>
                     </div>
                     <div class="gallery-item" data-category="assembly">
-                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Award Ceremony">
-                        <div class="gallery-overlay">
+                       <img src="Assets/Assembly3.jpg" alt="Holi Colors Celebration"><div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Award Ceremony</h4>
-                                <p>Recognizing outstanding student achievements and accomplishments</p>
+                                <h4>Recognition Ceremony</h4>
+                                <p>Honoring outstanding students and their achievements</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Sports Category -->
+                      <!-- Independence Day -->
+<div class="event-category">
+    <div class="category-title">
+        <i class="fas fa-flag"></i>
+        Independence Day
+    </div>
+    <div class="category-divider"></div>
+    <div class="gallery-grid">
+        <div class="gallery-item" data-category="assembly">
+            <img src="Assets/Independence1.jpg" alt="Flag Hoisting">
+            <div class="gallery-overlay">
+                <div class="gallery-caption">
+                    <h4>Flag Hoisting</h4>
+                    <p>Hoisting the national flag with pride and patriotism</p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="assembly">
+            <img src="Assets/Independence2.jpg" alt="Cultural Performances">
+            <div class="gallery-overlay">
+                <div class="gallery-caption">
+                    <h4>Cultural Performances</h4>
+                    <p>Students performing patriotic songs and dances</p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="assembly">
+            <img src="Assets/Independence3.jpg" alt="Unity in Diversity">
+            <div class="gallery-overlay">
+                <div class="gallery-caption">
+                    <h4>Unity in Diversity</h4>
+                    <p>Celebrating India's cultural richness and freedom</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- Waterpark Trip -->
             <div class="event-category">
                 <div class="category-title">
-                    <i class="fas fa-trophy"></i>
-                    Sports & Athletics
+                    <i class="fas fa-water"></i>
+                    Waterpark Trip
                 </div>
                 <div class="category-divider"></div>
                 <div class="gallery-grid">
-                    <div class="gallery-item" data-category="sports">
-                        <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sports Day">
+                    <div class="gallery-item" data-category="waterpark">
+                        <img src="Assets/Waterpark1.jpg" alt="Unity in Diversity">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Annual Sports Day</h4>
-                                <p>Track and field events showcasing athletic talents</p>
+                                <h4>Thrilling Slides</h4>
+                                <p>Students enjoying exciting water slides and attractions</p>
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item" data-category="sports">
-                        <img src="https://images.unsplash.com/photo-1593786481097-2bdf2a1d0516?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Football Match">
-                        <div class="gallery-overlay">
+    
+                    <div class="gallery-item" data-category="waterpark">
+                        <img src="Assets/Waterpark2.jpg" alt="Unity in Diversity">
+                            <div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Football Tournament</h4>
-                                <p>Inter-house football competition with enthusiastic participation</p>
+                                <h4>Memorable Moments</h4>
+                                <p>Group photo capturing the joy of the waterpark excursion</p>
                             </div>
                         </div>
                     </div>
-                    <div class="gallery-item" data-category="sports">
-                        <img src="https://images.unsplash.com/photo-1594736797933-d0b22c3cd4fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Cricket Match">
-                        <div class="gallery-overlay">
+                    <div class="gallery-item" data-category="waterpark">
+                        <img src="Assets/Waterpark3.jpg" alt="Unity in Diversity">
+                            <div class="gallery-overlay">
                             <div class="gallery-caption">
-                                <h4>Cricket Championship</h4>
-                                <p>School cricket team competing in regional tournaments</p>
+                                <h4>Pool Games</h4>
+                                <p>Fun-filled water activities and team games</p>
                             </div>
                         </div>
                     </div>
@@ -273,15 +228,21 @@
     <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
-            <button class="lightbox-close" id="lightbox-close">&times;</button>
-            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&larr;</button>
-            <button class="lightbox-nav lightbox-next" id="lightbox-next">&rarr;</button>
-            <img class="lightbox-image" id="lightbox-image" src="" alt="">
-            <div class="lightbox-caption" id="lightbox-caption">
-                <h4></h4>
-                <p></p>
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <div class="lightbox-caption" id="light boxCaption">
+                <h4 id="lightboxTitle"></h4>
+                <p id="lightboxDescription"></p>
             </div>
         </div>
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">
+            <i class="fas fa-chevron-right"></i>
+        </button>
     </div>
 
     <!-- Footer -->
@@ -289,48 +250,34 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Shanti Global Academy</h4>
-                    <p>Excellence in Education Since 1985</p>
-                    <p>123 Education Lane, Learning City, LC 12345</p>
-                    <p>Phone: (555) 123-4567</p>
-                    <p>Email: info@shantiglobal.edu</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
-                    <a href="#about">About Us</a>
-                    <a href="#academics">Academics</a>
-                    <a href="#admissions">Admissions</a>
-                    <a href="#gallery">Gallery</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Programs</h4>
-                    <a href="#">Pre-Primary</a>
-                    <a href="#">Primary School</a>
-                    <a href="#">Middle School</a>
-                    <a href="#">High School</a>
-                    <a href="#">Extra-Curricular</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect With Us</h4>
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot No. 17 karni vihar,Vishwakarma Industrial Area, Jaipur, Laxminarayanpura, Rajasthan 302032</p>
+                    <p><i class="fas fa-phone"></i> +91 98294 81055</p>
+                    <p><i class="fas fa-envelope"></i> shanti.global14@gmail.com</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/company/shanti-global-academy/"><i class="fab fa-linkedin"></i></a>
                     </div>
+                </div>
+               
+                <div class="footer-section">
+                    <h4>School Hours</h4>
+                    <p>Monday - Friday: 8:00 AM - 2:00 PM</p>
+                    <p>Saturday: 8:00 AM - 12:00 PM</p>
+                    <p>Sunday: Closed</p>
+                    <p>Office Hours: 9:00 AM - 4:00 PM</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Shanti Global Academy. All rights reserved.</p>
+                <p>&copy; 2024 Shanti Global Academy. All rights reserved. | Designed with ❤️ for Education</p>
             </div>
         </div>
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scroll-top">
+    <button class="scroll-top" id="scrollTop">
         <i class="fas fa-arrow-up"></i>
     </button>
+
     <script src="JS/events.js"></script>
 </body>
 </html>

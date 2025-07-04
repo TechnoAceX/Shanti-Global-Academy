@@ -18,6 +18,13 @@
             --accent-green: #10b981;
         }
 
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.6), rgba(59, 130, 246, 0.4)),
+            url('../Assets/SGA.png');
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;

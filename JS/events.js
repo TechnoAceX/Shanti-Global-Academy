@@ -1,148 +1,138 @@
-// Navbar scroll effect
-        window.addEventListener('scroll', function() {
+ // Navbar scroll effect
+        window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            const scrollTop = document.getElementById('scroll-top');
-            
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-                scrollTop.classList.add('visible');
             } else {
                 navbar.classList.remove('scrolled');
-                scrollTop.classList.remove('visible');
             }
         });
 
-    const holiImages = [
-        'Assets/holi1.jpg',
-        'Assets/holi2.jpg',
-        'Assets/holi3.jpg'
-    ];
-    let currentIndex = 0;
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    function changeImage(direction) {
-        currentIndex += direction;
-        if (currentIndex < 0) currentIndex = holiImages.length - 1;
-        if (currentIndex >= holiImages.length) currentIndex = 0;
-
-        const imageElement = document.getElementById('holiImage');
-        imageElement.style.opacity = 0;
-
-        setTimeout(() => {
-            imageElement.src = holiImages[currentIndex];
-            imageElement.style.opacity = 1;
-        }, 200);
-    }
-
-
-        // Scroll to top functionality
-        document.getElementById('scroll-top').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Section visibility animation
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, observerOptions);
 
-        sections.forEach(section => {
+        document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
         });
 
         // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxDescription = document.getElementById('lightboxDescription');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
         let currentImageIndex = 0;
-        let galleryItems = [];
+        let currentImages = [];
 
-        function initLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
-            const lightboxCaption = document.getElementById('lightbox-caption');
-            const lightboxClose = document.getElementById('lightbox-close');
-            const lightboxPrev = document.getElementById('lightbox-prev');
-            const lightboxNext = document.getElementById('lightbox-next');
-            
-            galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
-            
-            // Add click event to gallery items
-            galleryItems.forEach((item, index) => {
-                item.addEventListener('click', function() {
-                    currentImageIndex = index;
-                    openLightbox();
-                });
-            });
-
-            // Close lightbox
-            lightboxClose.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-
-            // Navigation
-            lightboxPrev.addEventListener('click', function() {
-                currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
-                updateLightboxContent();
-            });
-
-            lightboxNext.addEventListener('click', function() {
-                currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
-                updateLightboxContent();
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (lightbox.classList.contains('active')) {
-                    if (e.key === 'Escape') {
-                        closeLightbox();
-                    } else if (e.key === 'ArrowLeft') {
-                        currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
-                        updateLightboxContent();
-                    } else if (e.key === 'ArrowRight') {
-                        currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
-                        updateLightboxContent();
-                    }
-                }
-            });
-
-            function openLightbox() {
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                updateLightboxContent();
-            }
-
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-
-            function updateLightboxContent() {
-                const currentItem = galleryItems[currentImageIndex];
-                const img = currentItem.querySelector('img');
-                const caption = currentItem.querySelector('.gallery-caption');
+        // Open lightbox
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-caption');
+                
+                currentImageIndex = index;
+                currentImages = Array.from(galleryItems);
                 
                 lightboxImage.src = img.src;
                 lightboxImage.alt = img.alt;
+                lightboxTitle.textContent = caption.querySelector('h4').textContent;
+                lightboxDescription.textContent = caption.querySelector('p').textContent;
                 
-                const captionTitle = caption.querySelector('h4').textContent;
-                const captionText = caption.querySelector('p').textContent;
-                
-                lightboxCaption.querySelector('h4').textContent = captionTitle;
-                lightboxCaption.querySelector('p').textContent = captionText;
-            }
-        }
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
 
-        // Initialize lightbox when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initLightbox);
+        // Close lightbox
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Navigation in lightbox
+        const showImage = (index) => {
+            if (index >= 0 && index < currentImages.length) {
+                const item = currentImages[index];
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-caption');
+                
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightboxTitle.textContent = caption.querySelector('h4').textContent;
+                lightboxDescription.textContent = caption.querySelector('p').textContent;
+                
+                currentImageIndex = index;
+            }
+        };
+
+        lightboxNext.addEventListener('click', () => {
+            const nextIndex = (currentImageIndex + 1) % currentImages.length;
+            showImage(nextIndex);
+        });
+
+        lightboxPrev.addEventListener('click', () => {
+            const prevIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+            showImage(prevIndex);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                switch(e.key) {
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                    case 'ArrowRight':
+                        const nextIndex = (currentImageIndex + 1) % currentImages.length;
+                        showImage(nextIndex);
+                        break;
+                    case 'ArrowLeft':
+                        const prevIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+                        showImage(prevIndex);
+                        break;
+                }
+            }
+        });
+
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -158,51 +148,59 @@
             });
         });
 
-        // Add loading animation for images
-        function addImageLoadingEffect() {
-            const images = document.querySelectorAll('.gallery-item img');
+        // Touch/swipe support for mobile lightbox navigation
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        lightbox.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        const handleSwipe = () => {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
             
-            images.forEach(img => {
-                img.addEventListener('load', function() {
-                    this.style.opacity = '1';
-                });
-                
-                // Set initial opacity
-                img.style.opacity = '0';
-                img.style.transition = 'opacity 0.3s ease';
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next image
+                    const nextIndex = (currentImageIndex + 1) % currentImages.length;
+                    showImage(nextIndex);
+                } else {
+                    // Swipe right - previous image
+                    const prevIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+                    showImage(prevIndex);
+                }
+            }
+        };
+
+        // Image loading optimization
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('load', () => {
+                img.style.opacity = '1';
             });
-        }
+        });
 
-        // Initialize image loading effects
-        document.addEventListener('DOMContentLoaded', addImageLoadingEffect);
-
-        // Add hover effects for gallery items
-        function addHoverEffects() {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            
-            galleryItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
-                });
+        // Lazy loading for better performance
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
             });
-        }
+        });
 
-        // Initialize hover effects
-        document.addEventListener('DOMContentLoaded', addHoverEffects);
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
 
-        // Preload images for better performance
-        function preloadImages() {
-            const images = document.querySelectorAll('.gallery-item img');
-            images.forEach(img => {
-                const imageUrl = img.src;
-                const preloadImg = new Image();
-                preloadImg.src = imageUrl;
-            });
-        }
-
-        // Initialize preloading
-        document.addEventListener('DOMContentLoaded', preloadImages);
+        
