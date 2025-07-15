@@ -37,6 +37,8 @@ This website serves as an interactive platform for students, parents, teachers, 
 **Pawan Manghnani**  
 
 [GitHub] (https://github.com/TechnoAceX/Shanti-Global-Academy) |
+---
+
 [LinkedIn] (https://www.linkedin.com/in/pawan-manghnani-267a73240/)
 ---
 
